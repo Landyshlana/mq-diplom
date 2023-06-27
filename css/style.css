@@ -1,4 +1,4 @@
-@font-face {
+  @font-face {
     font-family: "OpenSans";
     src: url(../fonts/OpenSans-Regular.woff);
     font-weight: 400;
@@ -12,7 +12,7 @@
     font-style: normal;
     font-display: swap;
   }
-    * {
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -23,14 +23,11 @@
     text-decoration: none;
   }
   .popup-container {
-    background:#000000;
+    background:rgba(0, 0, 0, 0.8);
     width:100%;
     z-index: 100;
     height:100%;
-    background: #000000;
-    opacity: 0.8;
     position: fixed;
-    top: 0;
   }
   .popup {
     display: flex;
@@ -46,7 +43,7 @@
     left: 50%;
     transform: translate(-50%);
   }
-  .popup::before {
+  .popup-close {
     content:"";
     width: 19px;
     height: 19px;
@@ -78,7 +75,7 @@
     background-image: url(../svg/form-arrows.svg);
     background-repeat: no-repeat;
     background-position: right 13px center;
-    background-size: 16px;
+    background-size: 9px;
   }
     select::-ms-expand {
     display: none;
@@ -86,14 +83,14 @@
   .field-group {
     line-height: 1;
   }
-    .field-label {
+  .field-label {
     font-size: 13px;
     color: #000000;
-  
   }
-    .radio {display:none;
-     }
-   .radio-group-text {
+  .radio {
+      display:none;
+  }
+  .radio-group-text {
     font-size: 13px;
     margin-right:17px;
   }
@@ -112,7 +109,7 @@
   .radio:checked + .radio-group-text::before{
     background-image: url(../svg/form-circle.svg);
   }
-    .textarea {
+  .textarea {
     width: 100%;
     height: 133px;
     background: #f4f7f6;
@@ -175,7 +172,6 @@
     display: flex;
     color: #ffffff;
     list-style-type: none;
-    font-size: 13px;
     text-transform: uppercase;
     font-weight: 400;
     text-align: center;
@@ -186,6 +182,7 @@
   .nav__link {
     text-decoration: none;
     color: #ffffff;
+    font-size: 13px;
   }
   .banner {
     width: 77%;
@@ -412,7 +409,7 @@
     border: 1px solid #b59f5b;
   }
   .search__button {
-    background-image: url("../images/search.svg");
+    background-image: url("../svg/search.svg");
     background-size: 40%;
     background-repeat: no-repeat;
     background-position: center;
@@ -542,8 +539,6 @@
   .shop__img {
     object-fit: cover;
     object-position: center;
-    max-width: 301px;
-    height: auto;
   }
   .shop__content {
     padding-bottom: 20px;
@@ -563,6 +558,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
     flex: 1 1 50%;
   }
@@ -587,9 +583,13 @@
   .shop__price__sale:after {
     content: " \20BD";
   }
-  .shop .button {
-    height: 48px;
-    padding: 0 27px;
+  .shop__button__link {
+    text-transform: uppercase;
+    background: #b59f5b;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 14px;
+    padding:17px 30px;
   }
   .socials {
     margin: 0 auto;
@@ -632,27 +632,23 @@
     font-size: 12px;
     color: #999999;
     font-weight: 700;
-  }
-  /*body:after{
-    content:"";
-    display:blok;
-    width:1660px;
-    height:3207px;
-    background-image:url("https://github.com/netology-code/mq-diploma/blob/master/sources/NOEMI_mq_desktop.jpg?raw=true");
-    position:absolute;
-    top:0;
-    left:calc(50%-830px);
-    opacity:0.4;
-    z-index:999;
-    background:cover;
-    background-repeat: no-repeat;
-  }*/
-    @media (max-width: 1200px) and (min-width:641px)  {
+  }   
+  @media (max-width: 1200px) and (min-width:641px)  {
     html {
       font-size: 17px;
     }
     .header {
       background: url(../images/banner-bg-tablet.jpg);
+      padding-bottom: 125px;
+      min-height: 392px;
+      padding-top: 47px;
+      background-size: cover;
+      background-position: center;
+      background-color: #000000;
+      background-repeat: no-repeat;
+    }
+    .banner {
+      line-height: 1.4; 
     }
     .nav {
       display: none;
@@ -681,9 +677,11 @@
       flex-basis: 45%;
     }
     .container,
-    mainaside,
-    .shop__container {
+    .mainaside {
       padding: 0 35px;
+    }
+    .shop__container {
+      padding: 0 34px;
     }
     .main {
       flex-grow: 1;
@@ -695,10 +693,6 @@
       flex-wrap: wrap;
       max-width:550px;
     }
-    
-    .mainaside {
-      padding: 0 35px;
-    }
     .news__container {
       border-bottom: 3px solid #eeeeee;
       margin-bottom: 20px;
@@ -707,40 +701,50 @@
     .sidebar {
       margin-left: 32px;
     }
+    .shop-description {
+      max-width: 415px;
+    }
     .shop__container {
       flex-wrap: wrap;
     }
     .shop__block {
       flex-basis: 44%;
       padding: 0 3%;
+      flex-shrink: 2;
     }
     .socials {
       margin: 0 35px;
     }
   }
+
   @media (orientation: landscape) and ((max-width: 1200px) and (min-width:641px)) {
-  
     .trend__block {
-     width: calc((100%-15px) / 4);
+      width: calc((100%-15px) / 4);
     }
   }
-  @media (max-width: 718px) {
-    .shop__container {
-      flex-direction: column;
+  @media (max-width: 770px) {
+    .shop__img {
+      object-fit: cover;
+      object-position: center;
+      max-width: 98%;
+      aspect-ratio: 1;
     }
-   }
+  }
   @media (max-width: 640px) {
-      html {
-        font-size: 16px;
-      }
-      .header {
-        background: url(../images/banner-mobile.jpg);
-        padding-bottom: 215px;
-        background-size: cover;
-      }
-      .nav {
-        display: none;
-      }
+    html {
+      font-size: 16px;
+    }
+    .header {
+      background: url(../images/banner-mobile.jpg);
+      padding-bottom: 215px;
+      background-size: cover;
+      background-position: center;
+      background-color: #000000;
+      background-repeat: no-repeat;
+    }
+    .nav {
+      display: none;
+    }
       .burger {
         display: block;
       }
@@ -756,22 +760,25 @@
       .logo__link {
         margin-top: 172px;
       }
-       .trend__container {
-      flex-wrap: wrap;
+      .trend__container {
+        flex-wrap: wrap;
          margin: 0 auto 5px;
-     }
-         .trend__block {
-      flex-basis: 100%;
-    }
+      }
+      .trend__block {
+        flex-basis: 100%;
+      }
       .mainaside {
         padding: 0 15px;
         flex-direction: column;
       }
       .news {
         flex-direction: column;
+        width:100%;
       }
-      .news {
-        width: 100%;
+      .news__container {
+        border-bottom: 4px solid #eeeeee;
+        margin-bottom: 21px;
+        margin-right: 15px;
       }
       .news__img {
         margin-right: 0;
@@ -796,38 +803,48 @@
       }
       .sidebar {
         margin: auto;
+        width:100%;
+      }
+      .search, .search__label, .menu, .theme, .field {
+         width:100%
       }
       .popup {
         padding: 30px;
         top:60px;
       }
-       .shop__container {
-      flex-wrap: wrap;
-        justify-content: center;
-    }
-    .shop__block {
-      flex-basis: 44%;
-      padding: 0 3%;
-    }
-    }
-  
-  
-   @media (orientation: landscape) and (max-width: 640px) or (orientation: portrait) and ((max-width: 1200px) and (min-width:641px)) 
-   {
-      
-     .trend__ {
-            flex-wrap: wrap;
+      .shop__container {
+        flex-direction: column;
+        margin:0 auto;
       }
-    .trend__block {
-     width: 45%;
+      .shop__block {
+        flex-basis: 100%;
+        padding:0 15px;
+      }
+      .shop__img {
+        max-width: 100%;
+        aspect-ratio: 1;
+      }
+      .shop-description {
+        max-width:88%;
+      }
+      .letter {
+        width: 100%;
+      }
     }
-  }
-    @media  (max-width: 640px) and (orientation: portrait) {
+@media (orientation: landscape) and (max-width: 640px) or (orientation: portrait) and ((max-width: 1200px) and (min-width:641px)) {
+      .trend__ {
+        flex-wrap: wrap;
+      }
+      .trend__block {
+        width: 45%;
+      }
+    }
+@media  (max-width: 640px) and (orientation: portrait) {
      .trend__container {
-      flex-wrap: wrap;
+        flex-wrap: wrap;
      }
     .trend__block {
       width: 100%;
+     }
     }
-  }
   
