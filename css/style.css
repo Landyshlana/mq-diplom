@@ -484,14 +484,8 @@
     list-style-type: none;
     text-transform: capitalize;
     margin-bottom: 15px;
-  }
-  .theme__item:after {
-    content: "";
-    display: block;
-    width: 272px;
-    height: 2px;
-    background: #ededed;
-    margin-top: 10px;
+    padding-bottom:10px;
+    border-bottom: 2px solid #ededed;
   }
   .theme__link {
     font-size: 14px;
